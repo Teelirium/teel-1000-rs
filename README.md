@@ -1,25 +1,26 @@
-# Discord Youtube Player
+# Teel-1000
 
-## A Discord bot written in Rust that plays Youtube audio in voice channels
+## This bot sucks
 
-## Dependencies
-This bot uses the Serenity and its voice extension Songbird. In order for
-the bot to work one must have Opus, FFmpeg, and youtube-dl installed.
+## Dependencies 
+Cmake (for building opus), ffmpeg, and yt-dlp are required to run this bot
 
-## Environment
-The bot also requires a valid Discord bot token to be specified in a `.env`
-as `BOT_TOKEN`.
+## Environment variables
+```
+BOT_TOKEN
+```
 
 ## Running
-Once the above requirements are met run the code normally, e.g. `cargo run`
+```
+cargo run
+```
 
-## Usage
-The bot has the following commands:
-* `/deafen`: Deafens the bot
-* `/join`: Manually tell the bot to join a voice call
-* `/leave`: Manually tell the bot to leave a voice call
-* `/mute`: Mute the bot
-* `/ping`: A ping command
-* `/play <url>`: Play a Youtube video
+## Commands
+* `/ping`: Pong
+* `/play <link/search>`: Play a Youtube video
+* `/join`: Make the bot join a voice call
+* `/leave`: Make the bot leave a voice call
+* `/deafen`: Deafen the bot
 * `/undeafen`: Undeafen the bot
+* `/mute`: Mute the bot
 * `/unmute`: Unmute the bot
