@@ -1,10 +1,6 @@
 use serenity::{
     builder::CreateApplicationCommand,
-    model::prelude::{
-        application::interaction::application_command::ApplicationCommandInteraction,
-        interaction::{application_command::CommandDataOption, Interaction},
-        ChannelId, GuildId,
-    },
+    model::prelude::application::interaction::application_command::ApplicationCommandInteraction,
     prelude::Context,
 };
 
