@@ -54,7 +54,7 @@ pub async fn run(cmd: &ApplicationCommandInteraction, ctx: &Context) -> Option<S
     let is_url = url.starts_with("http");
     let result = match is_url {
         true => input::ytdl(&url).await,
-        false => input::ytdl_search(&url).await,
+        false => input::ytdl_search(format!("{} official audio", &url)).await,
     };
 
     let source = match result {
