@@ -18,8 +18,7 @@ pub async fn run(cmd: &ApplicationCommandInteraction, ctx: &Context) -> Option<S
         if let Err(e) = manager.remove(guild_id).await {
             return Some(format!("Failed: {:?}", e));
         }
-
-        return Some("Left the server.".to_string());
+        return Some("Left the voice channel.".to_string());
     } else {
         return Some("Not in a voice channel".to_string());
     }

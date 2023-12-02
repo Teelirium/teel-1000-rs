@@ -31,7 +31,7 @@ pub async fn run(cmd: &ApplicationCommandInteraction, ctx: &Context) -> Option<S
     let url: String;
 
     if let CommandDataOptionValue::String(_url) = option {
-        println!("{}", _url);
+        println!("Trying to play {:?}", _url);
         url = _url;
     } else {
         return Some("Please provide an argument".to_string());
@@ -61,15 +61,20 @@ pub async fn run(cmd: &ApplicationCommandInteraction, ctx: &Context) -> Option<S
         Ok(source) => source,
         Err(why) => {
             println!("Error playing source: {:#?}", why);
-
             return Some("Error playing source".to_string());
         }
     };
     let res_url = source.metadata.source_url.clone().unwrap();
     let title = source.metadata.title.clone().unwrap();
-    let track = handler_lock.play_only_source(source);
 
-    return Some(format!("Playing **``{}``**\n{}", title, res_url));
+    let _track = handler_lock.enqueue_source(source);
+
+    return Some(format!(
+        "Added **``{}``**, position in queue: {}\n{}",
+        title,
+        handler_lock.queue().len(),
+        res_url
+    ));
 }
 
 pub fn register(command: &mut CreateApplicationCommand) -> &mut CreateApplicationCommand {
@@ -79,7 +84,7 @@ pub fn register(command: &mut CreateApplicationCommand) -> &mut CreateApplicatio
         .create_option(|option| {
             option
                 .name("input")
-                .description("Youtube URL or search query")
+                .description("Youtube link or search query")
                 .kind(CommandOptionType::String)
                 .required(true)
         })
